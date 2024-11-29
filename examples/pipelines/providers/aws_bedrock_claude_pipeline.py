@@ -139,7 +139,7 @@ class Pipeline:
 
             payload = {"modelId": model_id,
                        "messages": processed_messages,
-                       "system": [{'text': system_message if system_message else 'you are an intelligent ai assistant'}],
+                       "system": [{'text': system_message["content"] if system_message["content"] else 'you are an intelligent ai assistant'}],
                        "inferenceConfig": {"temperature": body.get("temperature", 0.5)},
                        "additionalModelRequestFields": {"top_k": body.get("top_k", 200), "top_p": body.get("top_p", 0.9)}
                        }
