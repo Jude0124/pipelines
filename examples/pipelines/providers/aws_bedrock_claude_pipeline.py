@@ -137,7 +137,7 @@ class Pipeline:
 
                 processed_messages.append({"role": message["role"], "content": processed_content})
             if isinstance(system_message["content"]):
-                system_prompt=system_message["cntent"]
+                system_prompt=system_message["content"]
             else:
                 system_prompt='you are an intelligent ai assistant'
             payload = {"modelId": model_id,
