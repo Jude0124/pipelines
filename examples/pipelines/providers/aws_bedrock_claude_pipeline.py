@@ -136,10 +136,13 @@ class Pipeline:
                     processed_content = [{"text": message.get("content", "")}]
 
                 processed_messages.append({"role": message["role"], "content": processed_content})
-
+            if isinstance(system_message["content"]):
+                system_prompt=system_message["cntent"]
+            else:
+                system_prompt='you are an intelligent ai assistant'
             payload = {"modelId": model_id,
                        "messages": processed_messages,
-                       "system": system_message["content"] if system_message["content"] else 'you are an intelligent ai assistant',
+                       "system": system_prompt,
                        "inferenceConfig": {"temperature": body.get("temperature", 0.5)},
                        "additionalModelRequestFields": {"top_k": body.get("top_k", 200), "top_p": body.get("top_p", 0.9)}
                        }
